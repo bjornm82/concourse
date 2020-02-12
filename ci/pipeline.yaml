@@ -3,7 +3,7 @@ resources:
   type: git
   source:
     uri: https://github.com/bjornm82/concourse.git
-    paths: [/*]
+    skip_ssl_verification: true
 
 jobs:
 - name: unit
@@ -11,4 +11,4 @@ jobs:
   - get: concourse
     trigger: true
   - task: unit
-    file: concourse/ci/unit-task.yml
+    file: concourse/ci/unit-task.yaml
