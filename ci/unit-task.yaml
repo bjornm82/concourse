@@ -9,4 +9,4 @@ inputs:
   path: gopath/src/github.com/bjornm82/concourse (1)
 
 run:
-  path: gopath/src/github.com/bjornm82/concourse/build-golang/ci/unit.sh
+  path: gopath/src/github.com/bjornm82/concourse/ci/unit.sh
