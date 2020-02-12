@@ -6,7 +6,7 @@ image_resource:
 
 inputs:
 - name: concourse
-  path: gopath/src/github.com/bjornm82/concourse (1)
+  path: gopath/src/github.com/bjornm82/concourse
 
 run:
   path: gopath/src/github.com/bjornm82/concourse/ci/unit.sh
