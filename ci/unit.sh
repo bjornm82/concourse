@@ -2,8 +2,8 @@
 
 set -e -u -x
 
-export GOPATH=$PWD/gopath
-export PATH=$PWD/gopath/bin:$PATH
+export GOPATH=$PWD/github.com/bjornm82
+export PATH=$PWD/github.com/bjornm82/bin:$PATH
 
 cd concourse
 

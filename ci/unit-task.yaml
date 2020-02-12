@@ -8,7 +8,7 @@ inputs:
 - name: concourse
 
 caches:
-- path: gopath/
+- path: github.com/bjornm82/
 
 run:
   path: concourse/ci/unit.sh
