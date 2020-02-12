@@ -1,0 +1,5 @@
+resources:
+- name: source-code
+  type: git
+  source:
+    uri: git@github.com:bjornm82/concourse.git

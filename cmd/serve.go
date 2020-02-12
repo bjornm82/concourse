@@ -2,7 +2,12 @@ package cmd
 
 import (
 	"fmt"
+	"log"
+	"net/http"
+	"os"
+	"time"
 
+	"github.com/gorilla/mux"
 	"github.com/spf13/cobra"
 )
 
@@ -17,8 +22,36 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("serve called")
+		host, ok := os.LookupEnv("HTTP_SERVER_HOST")
+		if ok != true {
+			log.Fatal("host not found")
+		}
+		port, ok := os.LookupEnv("HTTP_SERVER_PORT")
+		if ok != true {
+			log.Fatal("port not found")
+		}
+
+		r := mux.NewRouter()
+		r.HandleFunc("/", HomeHandler)
+		http.Handle("/", r)
+		srv := &http.Server{
+			Handler: r,
+			Addr:    fmt.Sprintf("%s:%s", host, port),
+			// Good practice: enforce timeouts for servers you create!
+			WriteTimeout: 15 * time.Second,
+			ReadTimeout:  15 * time.Second,
+		}
+
+		log.Println("serving...")
+		log.Fatal(srv.ListenAndServe())
 	},
+}
+
+// HomeHandler handles root
+func HomeHandler(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(200)
+	log.Println("request made to /")
+	w.Write([]byte("{\"message\": \"ok\"}"))
 }
 
 func init() {

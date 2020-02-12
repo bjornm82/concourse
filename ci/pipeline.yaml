@@ -1,0 +1,14 @@
+resources:
+- name: concourse
+  type: git
+  source:
+    uri: https://github.com/bjornm82/concourse.git
+    paths: [/*]
+
+jobs:
+- name: unit
+  plan:
+  - get: concourse
+    trigger: true
+  - task: unit
+    file: concourse/ci/unit-task.yml
