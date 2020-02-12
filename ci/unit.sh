@@ -7,6 +7,6 @@ export PATH=$PWD/gopath/bin:$PATH
 
 cd concourse
 
-echo
+echo ls -alh
 echo "Running tests..."
 go test -v ./...
