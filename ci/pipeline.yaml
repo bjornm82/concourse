@@ -4,7 +4,11 @@ resources:
   source:
     uri: https://github.com/bjornm82/concourse.git
     skip_ssl_verification: true
-
+# - name: check
+#   type: time
+#   check_every: 1m
+#   source:
+#     interval: 1m
 jobs:
 - name: unit
   plan:
