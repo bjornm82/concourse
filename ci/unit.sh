@@ -9,6 +9,5 @@ cd gopath/src/github.com/bjornm82/concourse
 
 go get ./...
 
-echo
 echo "Running tests..."
 go test -v ./...
